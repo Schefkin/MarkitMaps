@@ -1,0 +1,51 @@
+.prompt {
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 25px;
+	background: #fff;
+	border: 1px solid #e6e6e6;
+	border-radius: 8px;
+}
+
+img {
+	width: 260px;
+}
+
+button {
+	display: block;
+	padding: 10px;
+	width: 100%;
+	border-radius: 3px;
+	background: #d83f45;
+	font-size: 14px;
+	font-weight: 700;
+	color: white;
+	cursor: pointer;
+}
+
+a.button {
+	box-sizing: border-box;
+	display: block;
+	padding: 10px;
+	width: 100%;
+	border-radius: 3px;
+	background: #000;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+a.google {
+	background: #4787ed;
+	transition: all 0.3s ease;
+}
+
+a.google:hover {
+	background-color: #4cc3ff;
+}
+
+a.google:active {
+	background-color: #e0e0e0;
+}

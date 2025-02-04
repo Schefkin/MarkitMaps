@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-M65ZGKLM');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="MarkitMaps" />
+  <meta property="og:description"
+    content="Find 🌍 places, 🚶 routes, and 💎 local gems instantly with MarkitMaps - Your ultimate travel companion" />
+  <meta property="og:image"
+    content="https://res.cloudinary.com/dd9trxmnc/image/upload/v1738675981/MarkitMaps/qcasz6ng9kkbqu55hzre.png" />
+  <meta property="og:url" content="https://www.markitmaps.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MarkitMaps" />
+  <meta name="twitter:description"
+    content="Find 🌍 places, 🚶 routes, and 💎 local gems instantly with MarkitMaps - Your ultimate travel companion" />
+  <meta name="twitter:image"
+    content="https://res.cloudinary.com/dd9trxmnc/image/upload/v1738675981/MarkitMaps/qcasz6ng9kkbqu55hzre.png" />
+  <meta name="twitter:url" content="https://www.markitmaps.com" />
+
+  <title>MarkitMaps</title>
+  <link rel="icon" href="/images/favicon.ico">
+
+  <link rel="stylesheet" href="/stylesheets/app.css">
+  <link rel="stylesheet" href="/stylesheets/footer.css">
+  <link rel="stylesheet" href="/stylesheets/phone.css">
+
+  <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.5.1/maptiler-sdk.umd.min.js"></script>
+  <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.5.1/maptiler-sdk.css" rel="stylesheet" />
+
+  <script src="https://cdn.maptiler.com/maptiler-geocoding-control/v1.3.3/maptilersdk.umd.js"></script>
+  <link href="https://cdn.maptiler.com/maptiler-geocoding-control/v1.3.3/style.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&family=Raleway:wght@800&family=Roboto:wght@300&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M65ZGKLM" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <nav>
+
+    <img src="/images/logo.png" alt="Logo" class="mapImg">
+
+
+    <div class="nav-links" id="navLinks">
+
+      <ul>
+        <li><a class="anchor" href="/contact">contact</a></li>
+        <li><a class="anchor" href="/info">guide, rules and FAQ</a></li>
+        <li>
+          <p class="loginMsg">Logged in through google as: <%= user.name || user.username || user.email %>
+          </p>
+        </li>
+        <li>
+          <form action="/logout" method="post">
+            <button class="logout" type="submit">Sign out</button>
+          </form>
+        </li>
+      </ul>
+
+
+
+
+    </div>
+
+  </nav>
+
+
+
+
+  <div class="container">
+    <div id="map"></div>
+  </div>
+
+
+
+  <div class="footer">
+
+    <div class="row">
+      <div class="box">
+        <span class="boxHeader">Ad</span>
+        <p class="boxContent">I'm looking for advertisers, contact me if you want your ad to appear on this site <br>
+          <a href="https://form.typeform.com/to/AZxjWfAY" target="_blank" rel="noopener noreferrer">Typeform</a>
+        </p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="footer-box blue">🛍️ shopping</div>
+      <div class="footer-box green">🌿 scenery</div>
+      <div class="footer-box orange">🍊 food</div>
+      <div class="footer-box yellow">🌇 neighborhood</div>
+      <div class="footer-box brown">🏛️ architecture</div>
+      <div class="footer-box gray">🌫️ other</div>
+    </div>
+
+  </div>
+
+
+
+  <script>
+    // map api info
+    maptilersdk.config.apiKey = 'vrVucLoXmLVZTP1IyBqv';
+    const map = new maptilersdk.Map({
+      container: 'map', // container's id or the HTML element to render the map
+      style: "5f352db4-b7b7-4787-b828-66ee88d06254",
+      center: [26.729200, 58.377689], //[16.62662018, 49.2125578], // starting position [lng, lat]
+      zoom: 14 // starting zoom
+    });
+
+
+
+    map.doubleClickZoom.disable();
+
+    function createMarker(text, lng, lat, color, url, date) {
+
+      // Function body
+      // console.log("Hello");
+      // console.log(`${color}`);
+      const marker = new maptilersdk.Marker({ color: color })
+        .setLngLat([lng, lat])
+        // .setPopup(new maptilersdk.Popup().setHTML(`<h3>${text}</h3>`))
+        .addTo(map);
+
+      const popup = new maptilersdk.Popup().setHTML(`
+      <h3>${text}</h3>
+      ${url ? `<br><img src="${url}" alt="picture">` : '<p>No image given</p>'}
+      <p>Date uploaded: ${date}</p>
+      
+      <button id="copyButton" onclick="copy(${lat}, ${lng})">Copy coordinates</button>
+      `);
+
+      marker.setPopup(popup);
+
+
+      return;
+    }
+
+
+
+    <% for (let i = 0; i < markers.length; i++) { %>
+      <% const lnglat = JSON.parse(markers[i].lnglat); %>
+        // console.log('nice');
+
+        createMarker('<%= markers[i].text %>', <%= lnglat.lng %>, <%= lnglat.lat %>, '<%= markers[i].color %>', '<%= markers[i].url %>', '<%= markers[i].date %>');
+
+      <% } %>
+
+      // funk for copying coordinates
+      function copy(lat, lng) {
+        alert('copied to clipboard');
+        navigator.clipboard.writeText(lat + ' ' + lng);
+      }
+
+      // Keep track of the popup so that you can remove the existing one when a new popup is created
+      let popup = null;
+
+    map.on('click', function (e) {
+      if (popup) {
+        popup.remove();
+      }
+    })
+
+    // Set up an event listener on the map.
+    map.on('dblclick', function (e) {
+
+      // is supposed to prevent multiple popup forms, so that only one is displayed at a time
+      if (popup) {
+        popup.remove();
+      }
+
+      // console.log(e.lngLat);
+
+
+      popup = new maptilersdk.Popup({ closeOnClick: false })
+
+        .setLngLat(e.lngLat)
+        .setHTML(`
+          <form action="/map" method="POST" id="popupForm" enctype="multipart/form-data">
+
+            <br>
+
+            <input placeholder="Place name - description" type="text" id="text" name="text" required>
+            <input type="hidden" id="lnglat" name="lnglat" value="">
+
+            <br>
+
+            <label for="colors">Please choose a category:</label>
+            <select name="color" id="colors">
+              <option value="#3498db">🛍️ shopping</option>
+              <option value="#2ecc71">🌿 scenery</option>
+              <option value="#f39c12">🍊 food</option>
+              <option value="#f1c40f">🌇 neighborhood</option>
+              <option value="#7f5539">🏛️ architecture</option>
+              <option value="#95a5a6">🌫️ other</option>
+            </select>
+
+            <br>
+
+            <label for="image">upload a photo of the location(OPTIONAL):</label>
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+
+
+            <br>
+
+            <input type="submit">
+          </form>
+          `)
+        .addTo(map);
+
+
+      // e.lngLat is an object thus it needs to be stringified
+      document.getElementById('lnglat').value = JSON.stringify(e.lngLat);
+
+    });
+
+
+
+
+    // Listen to zoom changes
+    map.on('zoom', function () {
+
+      const zoomLevel = map.getZoom();
+      const markers = document.getElementsByClassName('maplibregl-marker'); // Replace with your marker class name
+
+      // console.log("Current Zoom Level:", map.getZoom());
+
+      Array.from(markers).forEach(marker => {
+        if (zoomLevel < 11) { // Replace 12 with the desired zoom level
+          marker.style.display = 'none';  // Hide marker
+        } else {
+          marker.style.display = 'block'; // Show marker
+        }
+      });
+    });
+
+
+
+    const gc = new maptilersdkMaptilerGeocoder.GeocodingControl();
+
+    map.addControl(gc, 'top-left');
+
+  </script>
+</body>
+
+</html>

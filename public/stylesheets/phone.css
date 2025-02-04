@@ -1,0 +1,60 @@
+@media screen and (max-width: 1000px) {
+    .showcase {
+        border: 2px solid #333; /* Just to visualize the container */
+        border-radius: 15px;
+        display: flex;
+        justify-content: center; /* Centers the image horizontally inside the showcase */
+        align-items: center;     /* Centers the image vertically inside the showcase */
+        width: 95%;              /* Adjust the width as needed */
+        height: auto;
+    }
+    
+    .showcase img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    .info {
+        line-height: 1.5;         /* Spacing between lines for readability */
+        margin-bottom: 20px;      /* Adds space between answers */
+        text-align: justify;      /* Justifies the text for better alignment */
+        max-width: 90%;
+        margin-left: auto;        /* Centers the paragraph block */
+        margin-right: auto;       /* Centers the paragraph block */
+    
+    }
+    .container .logout {
+        margin-bottom: 20px;
+    }
+
+    .mapImg {
+        display: none;
+    }
+
+    .loginMsg {
+        display: none;
+    }
+
+    nav {
+        padding: 0;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    .row {
+        flex-wrap: wrap;
+    }
+
+    .footer-box {
+        flex: 1 1 30%;
+    }
+}
+
+@media screen and (max-height: 850px) {
+    #map {
+        height: 400px;
+    }
+}
