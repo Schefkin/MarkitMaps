@@ -2,9 +2,17 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%; /* Make sure both elements take full height */
+    width: 100%;  /* Optionally, ensure the body takes full width */
+}
+
+.navMapFooterContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .container {
