@@ -40,6 +40,12 @@
         padding: 0;
     }
 
+    .nav-links ul li {
+        padding: 0;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
     ul {
         padding: 0;
     }
