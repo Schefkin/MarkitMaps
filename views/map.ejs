@@ -2,16 +2,15 @@
 <html lang="en">
 
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-M65ZGKLM');</script>
-  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4TMZRYG678"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-4TMZRYG678');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,74 +56,70 @@
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M65ZGKLM" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <div class="navMapFooterContainer">
 
-  <nav>
+    <nav>
 
-    <img src="/images/logo.png" alt="Logo" class="mapImg">
-
-
-    <div class="nav-links" id="navLinks">
-
-      <ul>
-        <li><a class="anchor" href="/contact">contact</a></li>
-        <li><a class="anchor" href="/info">guide, rules and FAQ</a></li>
-        <li>
-          <p class="loginMsg">Logged in through google as: <%= user.name || user.username || user.email %>
-          </p>
-        </li>
-        <li>
-          <form action="/logout" method="post">
-            <button class="logout" type="submit">Sign out</button>
-          </form>
-        </li>
-      </ul>
+      <img src="/images/logo.png" alt="Logo" class="mapImg">
 
 
+      <div class="nav-links" id="navLinks">
 
-
-    </div>
-
-  </nav>
+        <ul>
+          <li><a class="anchor" href="/contact">contact</a></li>
+          <li><a class="anchor" href="/info">guide, rules and FAQ</a></li>
+          <li>
+            <p class="loginMsg">Logged in through google as: <%= user.name || user.username || user.email %>
+            </p>
+          </li>
+          <li>
+            <form action="/logout" method="post">
+              <button class="logout" type="submit">Sign out</button>
+            </form>
+          </li>
+        </ul>
 
 
 
 
-  <div class="container">
-    <div id="map"></div>
-  </div>
-
-
-
-  <div class="footer">
-
-    <div class="row">
-      <div class="box">
-        <span class="boxHeader">Ad</span>
-        <p class="boxContent">I'm looking for advertisers, contact me if you want your ad to appear on this site <br>
-          <a href="https://form.typeform.com/to/AZxjWfAY" target="_blank" rel="noopener noreferrer">Typeform</a>
-        </p>
       </div>
+
+    </nav>
+
+
+
+
+    <div class="container">
+      <div id="map"></div>
     </div>
 
 
-    <div class="row">
-      <div class="footer-box blue">🛍️ shopping</div>
-      <div class="footer-box green">🌿 scenery</div>
-      <div class="footer-box orange">🍊 food</div>
-      <div class="footer-box yellow">🌇 neighborhood</div>
-      <div class="footer-box brown">🏛️ architecture</div>
-      <div class="footer-box gray">🌫️ other</div>
+
+    <div class="footer">
+
+      <div class="row">
+        <div class="box">
+          <span class="boxHeader">Ad</span>
+          <p class="boxContent">I'm looking for advertisers, contact me if you want your ad to appear on this site <br>
+            <a href="https://form.typeform.com/to/AZxjWfAY" target="_blank" rel="noopener noreferrer">Typeform</a>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="footer-box blue">🛍️ shopping</div>
+        <div class="footer-box green">🌿 scenery</div>
+        <div class="footer-box orange">🍊 food</div>
+        <div class="footer-box yellow">🌇 neighborhood</div>
+        <div class="footer-box brown">🏛️ architecture</div>
+        <div class="footer-box gray">🌫️ other</div>
+      </div>
+
     </div>
 
   </div>
-
-</div>
 
 
 
@@ -182,8 +177,8 @@
         navigator.clipboard.writeText(lat + ' ' + lng);
       }
 
-      // Keep track of the popup so that you can remove the existing one when a new popup is created
-      let popup = null;
+    // Keep track of the popup so that you can remove the existing one when a new popup is created
+    let popup = null;
 
     map.on('click', function (e) {
       if (popup) {
