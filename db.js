@@ -2,6 +2,8 @@ var sqlite3 = require('sqlite3');
 
 var crypto = require('crypto');
 
+const path = require('path');
+
 // here are all tables created when the app starts
 // if they already do not exist
 
