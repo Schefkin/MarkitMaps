@@ -7,7 +7,7 @@ const path = require('path');
 // here are all tables created when the app starts
 // if they already do not exist
 
-const db = new sqlite3.Database(path.resolve('/var/data/database.db'));
+const db = new sqlite3.Database(path.join('/var/data', 'database.db'));
 
 db.serialize(function () {
     db.run("CREATE TABLE IF NOT EXISTS data ( \
