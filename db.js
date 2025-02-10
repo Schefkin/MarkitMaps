@@ -4,10 +4,9 @@ var crypto = require('crypto');
 
 const path = require('path');
 
-var persistentDisk = path.resolve('/var/data/database.db');
 // here are all tables created when the app starts
 // if they already do not exist
-const db = new sqlite3.Database(persistentDisk);
+const db = new sqlite3.Database('/var/data/database.db');
 
 db.serialize(function () {
     db.run("CREATE TABLE IF NOT EXISTS data ( \
