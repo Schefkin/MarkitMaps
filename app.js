@@ -44,13 +44,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var persistentDisk = path.resolve('/var/data/sessions.db')
 
 // session stuff
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  store: new SQLiteStore({ db: path.resolve('/opt/render/project/scr/var/data/sessions.db') })
+  store: new SQLiteStore({ db: persistentDisk })
 }));
 
 app.use(passport.authenticate('session'));
