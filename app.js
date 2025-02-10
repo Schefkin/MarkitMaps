@@ -51,7 +51,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  store: new SQLiteStore({ db: persistentDisk })
+  store: new SQLiteStore({dir:'/var/data/', db: 'sessions'})
 }));
 
 app.use(passport.authenticate('session'));
