@@ -57,11 +57,7 @@
     .footer-box {
         flex: 1 1 30%;
         font-size: 13px;
-    }
-
-    #copyButton {
-        all: unset;
-      }      
+    }     
 }
 
 @media screen and (max-height: 850px) {
