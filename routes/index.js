@@ -54,7 +54,8 @@ const formValidaton = [
         .isIn(['#3498db', '#2ecc71', '#f39c12', '#f1c40f', '#7f5539', '#95a5a6'])
 ];
 
-
+// moderators
+const moderators = ['Aleksander Šveikin'];
 
 
 /* GET home page or map page based on login status */
