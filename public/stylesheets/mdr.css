@@ -1,0 +1,133 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 columns */
+    gap: 16px;
+    /* Space between the posts */
+    padding: 16px;
+}
+
+.post {
+    background-color: #f9f9f9;
+    /* Light background for contrast */
+    border-radius: 12px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    padding: 16px;
+    /* Internal spacing */
+    margin-bottom: 16px;
+    /* Space between multiple posts */
+    font-family: Arial, sans-serif;
+    /* Clean font */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Smooth animations */
+}
+
+.toggle {
+    background-color: #ffa5a5;
+}
+
+.post:hover {
+    transform: translateY(-4px);
+    /* Lifts the post slightly on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow on hover */
+}
+
+.post p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+    /* Softer color for the body text */
+}
+
+.imgContainer {
+    height: 100px;
+    width: 100px;
+    border-radius: 8px; /* Rounded corners */
+    border: 2px solid #ddd; /* Light gray border */
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 8px;
+}
+
+/* Make the layout responsive */
+@media (max-width: 1200px) {
+    .post-container {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 columns for medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .post-container {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 columns for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .post-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns for mobile */
+    }
+}
+
+@media (max-width: 400px) {
+    .post-container {
+        grid-template-columns: 1fr;
+        /* Single column for very small screens */
+    }
+}
+
+.colorBox {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px; /* Rounded corners */
+
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blue {
+    background-color: #3498db;
+}
+
+.green {
+    background-color: #2ecc71;
+}
+
+.orange {
+    background-color: #f39c12;
+}
+
+.yellow {
+    background-color: #f1c40f;
+}
+
+.brown {
+    background-color: #7f5539;
+}
+
+.gray {
+    background-color: #95a5a6;
+}
