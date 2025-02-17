@@ -174,6 +174,15 @@ router.get('/error', function (req, res, next) {
     res.render('error');
 });
 
+// useless stuff
+router.get('/privacypolicy', function (req, res, next) {
+    res.render('pp');
+});
+
+router.get('/thermsofservice', function (req, res, next) {
+    res.render('tos');
+});
+
 // // error handler middleware
 router.use((err, req, res, next) => {
     // Log the error for debugging
