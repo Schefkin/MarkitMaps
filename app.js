@@ -3,7 +3,6 @@ require('dotenv').config();
 // // modules
 const ejsMate = require('ejs-mate');
 
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -12,6 +11,7 @@ var session = require('express-session');
 var passport = require('passport');
 
 var SQLiteStore = require('connect-sqlite3')(session);
+
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 
@@ -22,12 +22,6 @@ var authRouter = require('./routes/auth');
 
 
 const app = express()
-
-app.locals.pluralize = require('pluralize');
-
-
-// later part od env file or sth
-const port = 3000;
 
 // route stuff
 var indexRouter = require('./routes/index');
@@ -47,10 +41,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // session stuff
 app.use(session({
-  secret: 'keyboard cat',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
-  store: new SQLiteStore({ db: path.join('/var/data', 'sessions.db') })
+  store: new SQLiteStore({dir:'/var/data/', db: 'sessions'})
 }));
 
 app.use(passport.authenticate('session'));
@@ -69,8 +63,8 @@ app.all('*', (req, res, next) => {
 })
 
 
-
+const port = process.env.PORT || 3000;
 // port
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })

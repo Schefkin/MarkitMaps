@@ -10,6 +10,8 @@
     gtag('js', new Date());
 
     gtag('config', 'G-4TMZRYG678');
+
+    gtag('event', 'map_page_view');
   </script>
 
   <meta charset="UTF-8">
@@ -102,7 +104,8 @@
         <div class="box">
           <span class="boxHeader">Ad</span>
           <p class="boxContent">I'm looking for advertisers, contact me if you want your ad to appear on this site <br>
-            <a href="https://form.typeform.com/to/AZxjWfAY" target="_blank" rel="noopener noreferrer">Typeform</a>
+            <a onclick="trackClick()" href="https://form.typeform.com/to/AZxjWfAY" target="_blank"
+              rel="noopener noreferrer">Typeform</a>
           </p>
         </div>
       </div>
@@ -124,6 +127,11 @@
 
 
   <script>
+    // gtag
+    function trackClick() {
+      gtag('event', 'ad_click');
+    }
+
     // map api info
     maptilersdk.config.apiKey = 'vrVucLoXmLVZTP1IyBqv';
     const map = new maptilersdk.Map({
@@ -251,7 +259,7 @@
       // console.log("Current Zoom Level:", map.getZoom());
 
       Array.from(markers).forEach(marker => {
-        if (zoomLevel < 11) { // Replace 12 with the desired zoom level
+        if (zoomLevel < 8.5) { // Replace 12 with the desired zoom level
           marker.style.display = 'none';  // Hide marker
         } else {
           marker.style.display = 'block'; // Show marker

@@ -106,6 +106,7 @@ input, select {
 
 /* marker copy button */
 #copyButton {
+    color: #000000;
     background-color: #4787ed;
     cursor: pointer;
     border-radius: 5px;

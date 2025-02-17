@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/mdr.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&family=Raleway:wght@800&family=Roboto:wght@300&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-links" id="navLinks">
+          <ul>
+            <li><a class="anchor" href="/">map</a></li>
+            <li><a class="anchor" href="/contact">contact</a></li>
+            <li><a class="anchor" href="/info">guide, rules and FAQ</a></li>
+            <li>
+              <form action="/logout" method="post">
+                <button class="logout" type="submit">Sign out</button>
+              </form>
+            </li>
+          </ul>
+  
+  
+  
+  
+        </div>
+  
+      </nav>
+
+    <div class="post-container">
+
+        <% rows.forEach(row=> { %>
+            
+            <div class="post <%= row.toggle == 0 ? 'toggle' : '' %>">
+            
+                <p>#<%= row.id %> - <%= row.text %></p>
+                    <div class="imgContainer">
+                        <img src="<%= row.url %>" alt="No imgage given">
+                    </div>
+                    <br>
+                    <% if(row.color == '#3498db'){ %>
+                        <div class="colorBox blue">🛍️ shopping</div>
+                    <% } %>
+                    <% if(row.color == '#2ecc71'){ %>
+                        <div class="colorBox green">🌿 scenery</div>
+                    <% } %>
+                    <% if(row.color == '#f39c12'){ %>
+                        <div class="colorBox orange">🍊 food</div>
+                    <% } %>
+                    <% if(row.color == '#f1c40f'){ %>
+                        <div class="colorBox yellow">🌇 neighborhood</div>
+                    <% } %>
+                    <% if(row.color == '#7f5539'){ %>
+                        <div class="colorBox brown">🏛️ architecture</div>
+                    <% } %>
+                    <% if(row.color == '#95a5a6'){ %>
+                        <div class="colorBox gray">🌫️ other</div>
+                    <% } %>
+                    
+                <p><%= row.date %></p>
+
+                <% const lnglat = JSON.parse(row.lnglat); %>
+                <button onclick="copy('<%= lnglat.lat %>', '<%= lnglat.lng %>')">Copy coordinates</button>
+                <br><br>
+
+                <form action="/delete/<%= row.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% }); %>
+
+    </div>
+<script>
+    function copy(lat, lng) {
+        alert('copied to clipboard');
+        navigator.clipboard.writeText(lat + ' ' + lng);
+    }
+</script>
+</body>
+
+</html>

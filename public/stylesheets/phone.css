@@ -56,7 +56,8 @@
 
     .footer-box {
         flex: 1 1 30%;
-    }
+        font-size: 13px;
+    }     
 }
 
 @media screen and (max-height: 850px) {

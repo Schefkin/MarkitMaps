@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express = require('express');
 const { body, validationResult } = require('express-validator');
 var db = require('../db.js');
@@ -11,9 +13,9 @@ const cloudinary = require('cloudinary').v2;
 
 // Cloudinary configuration
 cloudinary.config({
-    cloud_name: 'dd9trxmnc',
-    api_key: '894869558736479',
-    api_secret: 'xR8X-IFFpnFLyHh6xfMlFkj5QLA'
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
 });
 
 // Multer setup for handling file uploads
@@ -52,7 +54,8 @@ const formValidaton = [
         .isIn(['#3498db', '#2ecc71', '#f39c12', '#f1c40f', '#7f5539', '#95a5a6'])
 ];
 
-
+// moderators
+const moderators = ['Aleksander Šveikin'];
 
 
 /* GET home page or map page based on login status */
@@ -160,7 +163,40 @@ router.post('/map', upload, formValidaton, (req, res, next) => {
     }
 });
 
+// moderation
+router.get('/mdr', function (req, res, next) {
 
+    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+        return res.redirect('/');
+    }
+
+
+    db.all('SELECT * FROM data ORDER BY id DESC', (err, rows) => {
+        if (err) {
+            return res.status(500).send('Error fetching data from database');
+        }
+        // Render the EJS template and pass the rows
+        res.render('mdr', { rows });
+    });
+
+});
+
+
+router.post('/delete/:id', (req, res) => {
+    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+        return res.redirect('/');
+    }
+
+    const postId = req.params.id;
+
+    db.run('DELETE FROM data WHERE id = ?', [postId], (err) => {
+        if (err) {
+            res.status(500).send("Error deleting user from the database.");
+        } else {
+            res.redirect('/mdr'); // Redirect back to the list after deletion
+        }
+    });
+});
 
 router.get('/info', function (req, res, next) {
     res.render('info');
@@ -194,7 +230,7 @@ router.use((err, req, res, next) => {
         }
     }
     res.redirect('/error');
-    
+
 });
 
 
