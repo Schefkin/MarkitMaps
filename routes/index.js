@@ -215,7 +215,7 @@ router.get('/privacypolicy', function (req, res, next) {
     res.render('pp');
 });
 
-router.get('/thermsofservice', function (req, res, next) {
+router.get('/termsofservice', function (req, res, next) {
     res.render('tos');
 });
 
