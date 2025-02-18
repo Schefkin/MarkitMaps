@@ -60,7 +60,7 @@
     }     
 }
 
-@media screen and (max-height: 850px) {
+@media screen and (max-height: 800px) {
     #map {
         height: 350px;
     }
