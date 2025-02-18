@@ -19,10 +19,19 @@
 
     text-align: center;
     /* padding-bottom: 21px; */
+    display: flex;
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: flex-end; /* Pushes .boxHeader to the bottom */
 }
 
 .boxHeader {
     color: #95a5a6;
+    align-self: flex-end; 
+    padding-right: 3px;
+}
+
+.boxContent {
+    margin-top: auto;
 }
 
 /* categories */
