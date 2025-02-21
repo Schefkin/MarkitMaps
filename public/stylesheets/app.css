@@ -116,3 +116,8 @@ input, select {
 #copyButton:hover {
     background-color: #4cc3ff;
 }
+
+/* marker stuff */
+.maplibregl-marker:hover {
+    cursor: pointer;
+}
