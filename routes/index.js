@@ -41,8 +41,7 @@ const formValidaton = [
         .exists()
         .isString()
         .isLength({ min: 1, max: 150 }).withMessage('Text field must not be empty nor over 150 characters long')
-        .trim() // Sanitize by trimming whitespace
-        .escape(),  // Sanitize by escaping HTML characters
+        .trim(), // Sanitize by trimming whitespace
 
     // validate lnglat field
     body('lnglat')
