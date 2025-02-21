@@ -198,6 +198,51 @@ router.post('/delete/:id', (req, res) => {
     });
 });
 
+// editing the post
+router.get('/edit/:id', (req, res) => {
+    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+        return res.redirect('/');
+    }
+
+    const postId = req.params.id;
+    // TODO check if id is in the database
+    db.all('SELECT * FROM data WHERE id = ?', [postId], (err, post) => {
+        if (err) {
+            res.status(500).send("Error");
+        } else {
+            res.render('edit', { post });
+        }
+    });
+});
+
+router.post('/edit/:id', (req, res) => {
+    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+        return res.redirect('/');
+    }
+
+    const postId = req.params.id;
+    const { text, color, checkbox } = req.body;
+
+    if (checkbox == 'on') {
+        db.all('UPDATE data SET text = ?, color = ?, url = ? WHERE id = ?', [text, color, null, postId], (err) => {
+            if (err) {
+                res.status(500).send("Error: " + err);
+            } else {
+                res.redirect('/mdr'); // Redirect back to the list after deletion
+            }
+        });
+    } else {
+        db.all('UPDATE data SET text = ?, color = ? WHERE id = ?', [text, color, postId], (err) => {
+            if (err) {
+                res.status(500).send("Error: " + err);
+            } else {
+                res.redirect('/mdr'); // Redirect back to the list after deletion
+            }
+        });
+    }
+
+});
+
 router.get('/info', function (req, res, next) {
     res.render('info');
 });

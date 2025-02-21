@@ -73,6 +73,9 @@
                 <button onclick="copy('<%= lnglat.lat %>', '<%= lnglat.lng %>')">Copy coordinates</button>
                 <br><br>
 
+                <a href="/edit/<%= row.id %>">Edit</a>
+                <br><br>
+
                 <form action="/delete/<%= row.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
                     <button type="submit">Delete</button>
                 </form>
