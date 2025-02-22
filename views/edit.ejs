@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="/stylesheets/edit.css">
 
-
-    <title>Document</title>
+    <title>Edit page</title>
 </head>
 
 <body>
@@ -20,12 +20,9 @@
 
     <form action="/edit/<%= post[0].id %>" method="POST" id="popupForm">
 
-        <br>
+        <textarea id="text" name="text" placeholder="Place name - description" required><%= post[0].text %></textarea>
 
-        <input placeholder="Place name - description" type="text" id="text" name="text" value="<%= post[0].text %>"
-            required>
-
-        <br>
+        <br><br>
 
         <select name="color" id="colors">
             <option value="#3498db">🛍️ shopping</option>
