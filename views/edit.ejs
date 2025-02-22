@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Hello</p>
+    <a href="/">Home</a>
+
+    <h1>
+        Editing post nr <%= post[0].id %>
+    </h1>
+
+    <form action="/edit/<%= post[0].id %>" method="POST" id="popupForm">
+
+        <br>
+
+        <input placeholder="Place name - description" type="text" id="text" name="text" value="<%= post[0].text %>"
+            required>
+
+        <br>
+
+        <select name="color" id="colors">
+            <option value="#3498db">🛍️ shopping</option>
+            <option value="#2ecc71">🌿 scenery</option>
+            <option value="#f39c12">🍊 food</option>
+            <option value="#f1c40f">🌇 neighborhood</option>
+            <option value="#7f5539">🏛️ architecture</option>
+            <option value="#95a5a6">🌫️ other</option>
+        </select>
+
+        <br>
+
+        <img src="<%= post[0].url %>" alt="No image given">
+        <br>
+
+        <label for="checkbox">Delete image?</label>
+        <input type="checkbox" id="checkbox" name="checkbox" value="on">
+
+
+        <br>
+
+        <input type="submit">
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Set the default selected value dynamically
+            document.getElementById("colors").value = "<%= post[0].color %>";
+        });
+
+    </script>
+
+</body>
+
+</html>
