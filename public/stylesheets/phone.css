@@ -60,14 +60,15 @@
     }     
 }
 
-@media screen and (max-height: 800px) {
-    #map {
-        height: 350px;
-    }
-}
-
 @media screen and (max-height: 750px) and (max-width: 2000px) {
     #map {
         height: 400px;
+    }
+}
+
+
+@media screen and (max-height: 800px) and (max-width: 1000px)  {
+    #map {
+        height: 350px;
     }
 }
