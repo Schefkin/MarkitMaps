@@ -30,7 +30,8 @@ passport.use(new GoogleStrategy({
           if (err) { return cb(err); }
           var user = {
             id: id,
-            name: profile.displayName
+            name: profile.displayName,
+            email: profile.emails ? profile.emails[0].value : null
           };
           return cb(null, user);
         });
@@ -47,7 +48,7 @@ passport.use(new GoogleStrategy({
 
 passport.serializeUser(function(user, cb) {
   process.nextTick(function() {
-    cb(null, { id: user.id, username: user.username, name: user.name });
+    cb(null, { id: user.id, username: user.username, name: user.name, email: user.email });
   });
 });
 
