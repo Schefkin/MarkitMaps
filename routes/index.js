@@ -54,7 +54,7 @@ const formValidaton = [
 ];
 
 // moderators
-const moderators = ['Aleksander Šveikin'];
+const moderators = ['alex.svek@gmail.com'];
 
 
 /* GET home page or map page based on login status */
@@ -165,7 +165,7 @@ router.post('/map', upload, formValidaton, (req, res, next) => {
 // moderation
 router.get('/mdr', function (req, res, next) {
 
-    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+    if (!req.user || !req.user.email || !moderators.includes(req.user.email)) {
         return res.redirect('/');
     }
 
@@ -182,7 +182,7 @@ router.get('/mdr', function (req, res, next) {
 
 
 router.post('/delete/:id', (req, res) => {
-    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+    if (!req.user || !req.user.email || !moderators.includes(req.user.email)) {
         return res.redirect('/');
     }
 
@@ -199,7 +199,7 @@ router.post('/delete/:id', (req, res) => {
 
 // editing the post
 router.get('/edit/:id', (req, res) => {
-    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+    if (!req.user || !req.user.email || !moderators.includes(req.user.email)) {
         return res.redirect('/');
     }
 
@@ -215,7 +215,7 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.post('/edit/:id', (req, res) => {
-    if (!req.user || !req.user.name || !moderators.includes(req.user.name)) {
+    if (!req.user || !req.user.email || !moderators.includes(req.user.email)) {
         return res.redirect('/');
     }
 
