@@ -7,6 +7,7 @@ Service suspended
 - Express.js
 - SQLite for database
 - Cloudinary for image storage
+- Maptiler for map service
 
 Showcase:
 
