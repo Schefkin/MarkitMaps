@@ -4,10 +4,11 @@ Service suspended
 
 ### Technologies used:
 
-- Express.js
+- Express.js(Node.js)
 - SQLite for database
 - Cloudinary for image storage
 - Maptiler for map service
+- Google Analytics
 
 Showcase:
 
