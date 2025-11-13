@@ -36,10 +36,14 @@ Simply sign up with google, type in any destination and that's it!
 3) Add a title, description, and picture to your post
 4) Click Submit. A marker will be automatically added on the map and will be visible to all other users
 
-## 4. Technologies used:
+## 4. Technologies used/features:
 
 - Express.js(Node.js)
+- EJS(Embedded JavaScript templating)
 - SQLite for database
 - Cloudinary for image storage
 - Maptiler for map service
 - Google Analytics
+- Google OAuth for authorisation
+- Meta tags (e.g. for social media cards to increase click through rate and other SEO)
+- Hosted on Render
